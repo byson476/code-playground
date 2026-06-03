@@ -12,7 +12,7 @@ on:
       - develop
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: ap-northeast-2
   AWS_ACCOUNT_ID: 748503131380
   ECR_REGISTRY: 748503131380.dkr.ecr.ap-northeast-2.amazonaws.com
   BACKEND_IMAGE: 748503131380.dkr.ecr.ap-northeast-2.amazonaws.com/code-playground-backend
@@ -120,6 +120,7 @@ jobs:
           context: ./apps/backend
           platforms: linux/amd64
           push: true
+          provenance: false
           tags: |
             ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
             ${{ env.BACKEND_IMAGE }}:latest
@@ -132,6 +133,7 @@ jobs:
           context: ./apps/frontend
           platforms: linux/amd64
           push: true
+          provenance: false
           tags: |
             ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
             ${{ env.FRONTEND_IMAGE }}:latest
